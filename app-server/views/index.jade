@@ -131,38 +131,58 @@ block content
           
     if view == "initial"
       div(id="myContainer")
-        div(class="row")
-          
-          div(class="col-sm-3")
-            div(class="container my-3 mx-3")
-              p
-                b Goals
-                i(class="fas fa-star" style="color:#fcba03")
-            div(id="containerLeft" class="container mt-4 mx-2")
-              each g in goals
-                div(class="card rounded p-3 m-2")
-                  div(class="row px-3")
-                    div(class="col")
-                      span 
-                        p(class="card-text m-0") #{g.motivational}
-                 
-                  
-                  div(class="row px-3")
-                    div(class="col")
-                      span
-                        strong=g.mood
-                
-                    
-          div(class="col-sm-6")
+      
+        .row
+          .col
+            .card-deck
+              .card
+                .card-body
+                  .h3(class="card-title") Daily Goals
+                      form-group(role='form')
+                        input.form-control(type='text', placeholder='Your Goals', name='task')
+                      |     
+                      button.btn.btn.btn-primary(type='button') Add Goal
+                      |         
+                      |         
+                      div
+                      |     
+                      ul#todo.list-unstyled
 
-            div(class="container my-3")
-              p
-                b Noice Tasks To-do
-            div(id="containerFeed" class="container mt-2")
-              each task in tasks
-                p #{task.title}
-                p #{task.description}
-                
+              .card
+                .card-body
+                  .h3(class="card-title") Task
+                  .mb-3
+                    label.form-label(for='taskcontrol') Title
+                    |   
+                    input#taskcontrol.form-control(type='text', placeholder='Enter Title')
+                    .mb-3
+                    label.form-label(for='descriptioncontrol') Example description
+                    |   
+                    textarea#descriptioncontrol.form-control(rows='3')
+                  button.btn.btn-primary.btn-lg(type='button') Save!
+
+        
+              //- div(id="containerLeft" class="container mt-4 mx-2")
+                each g in goals
+                  div(class="card rounded p-3 m-2")
+                    div(class="row px-3")
+                      div(class="col")
+                        span 
+                          p(class="card-text m-0") #{g.motivational}                 
+                    div(class="row px-3")
+                      div(class="col")
+                        span
+                          strong=g.mood            
+                div(class="column")
+
+                  div(class="container my-3")
+                    p
+                      b Noice Tasks To-do
+                  div(id="containerFeed" class="container mt-2")
+                    each task in tasks
+                      p #{task.title}
+                      p #{task.description}
+                      
     if view == "notToForget"
       div(id="myContainer")
         div(class="row")
