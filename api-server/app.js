@@ -34,7 +34,6 @@ db.once('open', function() {
 
 //-------------------------------------------------------------------------
 
-var indexRouter = require('./routes/index')
 var tasksRouter = require('./routes/tasks')
 var goalsRouter = require('./routes/goals')
 
@@ -90,7 +89,6 @@ app.use(function(req, res, next) {
 })
 
 app.use('/goals', goalsRouter)
-app.use('/', indexRouter)
 app.use('/tasks', tasksRouter)
 
 

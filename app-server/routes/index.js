@@ -29,6 +29,7 @@ router.get('/myHomePage', function(req, res, next) {
         .then(data => {
 
           let tasks = data.data
+          console.log("GOALS " + goals)
           res.render('index', {view: "initial", user: req.user, tasks: tasks, goals: goals})
 
         })
@@ -66,7 +67,38 @@ router.get('/tasks/done', function(Req, res, next) {
         .catch(e => console.log("[index] /myHomePage : error getting tasks -- " + e))
 })
 
-router.post('/tasks/new', re)
+router.post('/goals', function(req, res) {
+
+  let token = req.cookies.token
+
+  axios.post(apiServer + '/goals/new?token=' + token, {"title": req.body.goal})
+        .then(data => {
+          res.redirect('/myHomePage')
+        })
+        .catch(e => console.log("[index] /myHomePage : error getting tasks -- " + e))
+})
+
+router.get('/goals/delete/:id', function(req, res) {
+
+  let token = req.cookies.token
+
+  axios.delete(apiServer + '/goals/' + req.params.id + '?token=' + token, {"title": req.body.goal})
+        .then(data => {
+          res.redirect('/myHomePage')
+        })
+        .catch(e => console.log("[index] /myHomePage : error getting tasks -- " + e))
+})
+
+router.post('/tasks', function(req, res) {
+
+  let token = req.cookies.token
+
+  axios.post(apiServer + '/tasks/new?token=' + token)
+        .then(data => {
+          res.redirect('/myHomePage')
+        })
+        .catch(e => console.log("[index] /myHomePage : error getting tasks -- " + e))
+})
 
 router.get('/logout', function(Req, res, next) {
   res.clearCookie('token')

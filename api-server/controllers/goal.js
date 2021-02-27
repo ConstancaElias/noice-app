@@ -8,4 +8,15 @@ module.exports.list = ()=> {
         .exec()
 }
 
+//insert new goal
+module.exports.insert = (newGoal)=> {
+    var g = new Goal(newGoal)
+    return g.save();
+}
+
+// apaga um recurso dado o seu ID
+module.exports.delete = id => {
+    return Goal.deleteOne({ id: id });
+};
+
 

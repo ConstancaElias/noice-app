@@ -150,14 +150,20 @@ block content
               .card
                 .card-body
                   .h3(class="card-title") Daily Goals
-                      form(method="POST" action="/tasks")
-                        input.form-control(type='text', placeholder='Your Goals', name='task')
+                  div(class="container p-2")
+                      form(method="POST" action="/goals")
+                        input.form-control(type='text', placeholder='Your Goals', name='goal')
                         input.form-control(type='submit', placeholder='Your Goals' value="Add")
-                      |         
-                      |         
+                      
                       div
-                      |     
-                      ul#todo.list-unstyled
+                        ul
+                          each goal in goals
+                            li 
+                              span #{goal.title}
+                              a(href="/goals/delete/#{goal._id}")    
+                                i(class="fas fa-trash")
+
+
 
               .card
                 .card-body
