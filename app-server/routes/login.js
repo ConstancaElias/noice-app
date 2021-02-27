@@ -21,7 +21,7 @@ router.post(('/register'), function(req, res){
 
   console.log("user" + username)
 
-  axios.post(authServer + '/users/register', {"username": username, "mail": mail, "filiation": filiation, "password": password})
+  axios.post(authServer + '/users/register', {"username": username, "mail": mail, "password": password})
       .then(dados => {
           res.redirect(appServer + '/login')
       })
