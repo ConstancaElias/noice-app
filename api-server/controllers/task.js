@@ -6,4 +6,3 @@ module.exports.list = () => {
         .sort()
         .exec()
 }
-

@@ -11,8 +11,4 @@ function verificaAutorizacao(req, res, next){
   }
 }
 
-
-
-
-
 module.exports = router;
