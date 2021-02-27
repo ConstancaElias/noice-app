@@ -40,6 +40,8 @@ router.delete('/:id', (req, res) => {
 
 })
 
+router.post()
+
 
 
 module.exports = router;
