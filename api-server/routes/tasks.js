@@ -29,5 +29,17 @@ router.get('/done', (req, res) => {
  
  })
 
+router.delete('/:id', (req, res) => {
+
+    Tasks.delete(req.params.id)
+    .then(data => {
+        console.log(data)
+        res.status(201).json(data)
+    })
+    .catch(e => res.status(500).jsonp({err: e}))
+
+})
+
+
 
 module.exports = router;
