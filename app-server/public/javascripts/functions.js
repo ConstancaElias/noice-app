@@ -37,6 +37,3 @@ $(document).ready(function() {
         $(this).closest("ul").remove();
     });
 });
-
-
-/*Slider*/
