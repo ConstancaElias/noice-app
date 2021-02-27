@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"
+            type="text/css">
+
+        <title>AEBD</title>
+        <!-- Custom styles for this template -->
+
+        <link href="css/index.css" rel="stylesheet">
+        <script src="jscript/getData.js"></script>
+        <script type="text/javascript">
+            // Store
+            localStorage.setItem("time", "minute");
+        </script>
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html">AEBD</a>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="index.html">
+                                    <span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <h6
+                                class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                <span>View</span>
+                                <a class="d-flex align-items-center text-muted" href="#">
+
+                                </a>
+                            </h6>
+                            <li class="nav-item">
+                                <a class="nav-link" href="tablespaces.html">
+                                    <span data-feather="file"></span> Tablespaces
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="datafiles.html">
+                                    <span data-feather="file"></span> Datafiles
+                                </a>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+                </nav>
+
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                    <div
+                        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Dashboard</h1>
+                        <div class="btn-toolbar mb-2 mb-md-0">
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                onClick="start(localStorage.getItem('time'))">Force
+                                Refresh</button>
+
+                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span data-feather="calendar"></span>
+                                Choose Time
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <button class="dropdown-item" id="byMinute"
+                                    onClick="let v = localStorage.setItem('time','minute'); start(localStorage.getItem('time'))">By
+                                    Minute</button>
+                                <button class="dropdown-item" id="byHour"
+                                    onClick="let v = localStorage.setItem('time','hour'); start(localStorage.getItem('time'))">By
+                                    Hour</button>
+                                <button class="dropdown-item" id="byHour"
+                                    onClick="let v = localStorage.setItem('time','day'); start(localStorage.getItem('time'))">By
+                                    Day</button>
+                                <button class="dropdown-item" id="byHour"
+                                    onClick="let v = localStorage.setItem('time','month'); start(localStorage.getItem('time'))">By
+                                    Month</button>
+                                <button class="dropdown-item" id="byHour"
+                                    onClick="let v = localStorage.setItem('time','year'); start(localStorage.getItem('time'))">By
+                                    Year</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row ">
+                            <div class="col-6"> <canvas class="my-4" id="myMemoryPie" width="500" height="300"></canvas>
+                            </div>
+                            <div class="col-6"> <canvas class="my-4" id="mySessionChart" width="500"
+                                    height="300"></canvas>
+                            </div>
+                            <div class="col-6"> <canvas class="my-4" id="myCPUPie" width="500" height="300"></canvas>
+                            </div>
+                            <div class="col-6"> <canvas class="my-4" id="myPDBChart" width="500" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Users</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Default Tablespace</th>
+                                    <th>Temporary Tablespace</th>
+                                    <th>Last Login</th>
+                                </tr>
+                            </thead>
+                            <tbody id="output">
+                            </tbody>
+                        </table>
+                        <!-- End -->
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <footer class="footer mt-auto py-3">
+            <div class="container">
+                <span class="text-muted">Oracle Monitor | AEBD 2020</span>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+
+
+
+
+        <!-- Icons -->
+        <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+        <script>
+            feather.replace()
+        </script>
+
+        <!-- Graphs -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+        <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+        <script type="text/javascript">
+            function start(arg) {
+                fetchCPU(arg);
+                fetchMemory(arg);
+                fetchPDB(arg);
+                getSessions(arg);
+                getUsers(arg);
+            };
+
+            window.onload = function () {
+                start(localStorage.getItem('time'))
+                setInterval(() => {
+                    start(localStorage.getItem('time'))
+                }, 30000);
+            }
+        </script>
+
+
+    </body>
+
+</html>
