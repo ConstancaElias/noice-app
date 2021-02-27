@@ -20,14 +20,19 @@ a {
 }
 
 .navbar {
-    background-color: #ff914d;
+    background-color:#d9eef6;
     min-height: 80px;
 }
+
 
 .navbar-brand {
     padding: 0 15px;
     height: 80px;
     line-height: 80px;
+}
+
+.navbar-collapse > ul > li {
+    color: #545454;
 }
 
 .navbar-toggle {
@@ -52,7 +57,7 @@ li.dropdown:last-child .dropdown-menu {
 }
 
 body {
-    background: #d9d9d9;
+    background: #f0f0f0;
 }
 
 

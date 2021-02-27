@@ -66,6 +66,7 @@ router.get('/tasks/done', function(Req, res, next) {
         .catch(e => console.log("[index] /myHomePage : error getting tasks -- " + e))
 })
 
+router.post('/tasks/new', re)
 
 router.get('/logout', function(Req, res, next) {
   res.clearCookie('token')

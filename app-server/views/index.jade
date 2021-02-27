@@ -80,7 +80,7 @@ block content
                   button(class="btn btn-lg btn-primary btn-block text-uppercase" type="submit") Register
                 
   else
-    div(class="navbar navbar-expand-sm navbar-dark")
+    div(class="navbar navbar-expand-sm navbar-light")
       a(href="/myHomePage" class="navbar-brand") 
         img(src="/images/noice.png" class="d-inline-block align-top" height="96%")
       button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
@@ -138,10 +138,9 @@ block content
               .card
                 .card-body
                   .h3(class="card-title") Daily Goals
-                      form-group(role='form')
+                      form(method="POST" action="tasks")
                         input.form-control(type='text', placeholder='Your Goals', name='task')
-                      |     
-                      button.btn.btn.btn-primary(type='button') Add Goal
+                        input.form-control(type='submit', placeholder='Your Goals' value="Submit")
                       |         
                       |         
                       div
