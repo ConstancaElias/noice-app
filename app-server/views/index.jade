@@ -92,9 +92,9 @@ block content
             li(class="nav-item")
               a(class="nav-link" href="/myHomePage") Home
             li(class="nav-item")
-              a(class="nav-link" href="/notToForget") NotToForget
+              a(class="nav-link" href="/notToForget") Not To Forget
             li(class="nav-item")
-              a(class="nav-link" href="/tasksDone") TasksDone
+              a(class="nav-link" href="/tasksDone") Tasks Done
 
           ul(class="nav navbar-nav navbar-right")
             li(class="nav-item")
@@ -194,15 +194,14 @@ block content
                     each task in tasks
                       p #{task.title}
                       p #{task.description}
-                      
-  if view == "notToForget"
+                       
+    if view == "notToForget"
      
-
-  if view == "tasksDone"
-    div(id="myContainer")
-       div(class="row")
+    if view == "tasksDone"
+      div(id="myContainer")
+         div(class="row")
           
-        div(class="col-sm-3")
-          div(class="container my-3 mx-3")
-            p
-              b Tasks Done
+         div(class="col-sm-3")
+            div(class="container my-3 mx-3")
+              p
+                b Tasks Done
