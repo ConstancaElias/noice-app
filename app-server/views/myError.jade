@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  if view == "sessionExpired"
+    div(class="modal" id="session-expired-modal" tabindex="-1" role="dialog" style="display:block" aria-labelledby="myModalLabel")
+      div(class="modal-dialog" role="document")
+        div(class="modal-content")
+          div(class="modal-header")
+            h4(class="modal-title") Session Expired
+          
+          div(class="modal-body")
+            span Your session has expired.
+          
+          div(class="modal-footer")
+            form(method="get" action="/login")
+              input(type="submit" class="btn btn-primary" value="Login" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px; background-color: #428bca; color: #FFF;")
+  
+  if view == "noSession"
+     div(class="modal" id="session-expired-modal" tabindex="-1" role="dialog" style="display:block" aria-labelledby="myModalLabel")
+      div(class="modal-dialog" role="document")
+        div(class="modal-content")
+          div(class="modal-header")
+            h4(class="modal-title") No session
+          
+          div(class="modal-body")
+            span You don't have permissions to access this route.
+            br
+            span You must login first!
+          
+          div(class="modal-footer")
+            form(method="get" action="/login")
+              input(type="submit" class="btn btn-primary" value="Login" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px; background-color: #428bca; color: #FFF;")
+  
+  if view == "error"
+    div(class="modal" id="session-expired-modal" tabindex="-1" role="dialog" style="display:block" aria-labelledby="myModalLabel")
+      div(class="modal-dialog" role="document")
+        div(class="modal-content")
+          div(class="modal-header")
+            h4(class="modal-title") Error
+          
+          div(class="modal-body")
+            span e
+          div(class="modal-footer")
+            form(method="get" action="/login")
+              input(type="submit" class="btn btn-primary" value="Login" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px; background-color: #428bca; color: #FFF;")
+
+  else
+    h4= myMessage
+

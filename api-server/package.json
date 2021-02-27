@@ -1,0 +1,40 @@
+{
+  "name": "api-server2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "nodemon": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bagit-fs": "^1.1.1",
+    "buffer": "^6.0.3",
+    "cookie-parser": "^1.4.5",
+    "debug": "~2.6.9",
+    "dookie": "^0.4.1",
+    "exif-parser": "^0.1.12",
+    "express": "~4.16.1",
+    "express-jwt": "^6.0.0",
+    "express-jwt-blacklist": "^1.1.0",
+    "express-session": "^1.17.1",
+    "file-metadata": "^1.0.0",
+    "get-file-properties": "^1.0.1",
+    "http-errors": "~1.6.3",
+    "jade": "^1.11.0",
+    "jsonwebtoken": "^8.5.1",
+    "mime": "^2.5.0",
+    "mongoose": "^5.11.14",
+    "mongoose-regex-search": "^0.8.30",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.2",
+    "nanoid": "^3.1.20",
+    "ncp": "^2.0.0",
+    "uuid": "^8.3.2",
+    "zip-a-folder": "0.0.12",
+    "zip-folder": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
