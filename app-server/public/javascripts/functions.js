@@ -1,9 +1,4 @@
-$(document).ready(function(){
-  $('.toast').toast('show');
-  
-});
-
-$("#filterBtn").click(function(){
+("#filterBtn").click(function(){
     $("#filterModal").toogle();
 });
 

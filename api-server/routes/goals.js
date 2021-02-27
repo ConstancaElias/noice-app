@@ -8,7 +8,7 @@ var Goals = require('../controllers/goal')
   
 
 router.get('/', (req, res) => {
-    console.log("HEY! I'm in GOALS")
+    
     Goals.list()
     .then(data => {
         console.log(data)
