@@ -18,17 +18,19 @@ router.get('/', function(req, res, next) {
 router.get('/myHomePage', function(req, res, next) {
 
   if(req.cookies.token) {
-    let token = req.cookies.token
-    var decoded = jwt_decode(token);
 
-    axios.get(apiServer + '/goals?token=' + req.cookies.token)
+    let token = req.cookies.token
+
+    axios.get(apiServer + '/goals?token=' + token)
     .then(data => {
 
       let goals = data.data
-      axios.get(apiServer + '/tasks?token=' + req.cookies.token)
+      axios.get(apiServer + '/tasks?token=' + token)
         .then(data => {
+
           let tasks = data.data
           res.render('index', {view: "initial", user: req.user, tasks: tasks, goals: goals})
+
         })
         .catch(e => console.log("[index] /myHomePage : error getting tasks -- " + e))
     })
@@ -48,12 +50,20 @@ router.get('/myHomePage', function(req, res, next) {
 
 
 router.get('/notToForget', function(Req, res, next) {
+  /*
+    what do we want here?? tasks? goals?
+  */
   res.render('index', {view: "notToForget"})
 })
 
 
-router.get('/tasksDone', function(Req, res, next) {
-  res.render('index', {view: "tasksDone"})
+router.get('/tasks/done', function(Req, res, next) {
+  axios.get(apiServer + '/tasksDone?token=' + token)
+        .then(data => {
+          let tasks = data.data
+          res.render('index', {view: "tasksDone", tasks: tasks})
+        })
+        .catch(e => console.log("[index] /myHomePage : error getting tasks -- " + e))
 })
 
 
