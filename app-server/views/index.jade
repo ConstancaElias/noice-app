@@ -128,12 +128,24 @@ block content
                 i(class="fas fa-edit")
                 span  Edit profile
           
-          
+
     if view == "initial"
-      div(id="myContainer")
-      
+       .h1(style='text-align:center') Mood Tracker
         .row
-          .col
+           .container
+              i#emoji.large.material-icons
+                | sentiment_satisfied
+              | 
+              input#slider(type='range', min='0', max='4', value='2')
+            
+          script. 
+            var slider=document.getElementById("slider")
+            var emoji=document.getElementById("emoji")
+            var emoticons=["mood_bad","sentiment_very_dissatisfied","sentiment_satisfied", "sentiment_satisfied_alt","sentiment_very_satisfied"]
+            slider.oninput=function(){emoji.innerHTML=emoticons[slider.value];}
+      div(id="myContainer")
+        .row
+          .col          
             .card-deck
               .card
                 .card-body
@@ -183,20 +195,14 @@ block content
                       p #{task.title}
                       p #{task.description}
                       
-    if view == "notToForget"
-      div(id="myContainer")
-        div(class="row")
-          
-          div(class="col-sm-3")
-            div(class="container my-3 mx-3")
-              p
-                b Not To Forget
+  if view == "notToForget"
+     
 
-    if view == "tasksDone"
-      div(id="myContainer")
-        div(class="row")
+  if view == "tasksDone"
+    div(id="myContainer")
+       div(class="row")
           
-          div(class="col-sm-3")
-            div(class="container my-3 mx-3")
-              p
-                b Tasks Done
+        div(class="col-sm-3")
+          div(class="container my-3 mx-3")
+            p
+              b Tasks Done
