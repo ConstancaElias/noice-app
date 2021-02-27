@@ -1,3 +1,5 @@
 api-server/node_modules
 app-server/node_modules
 auth-server/node_modules
+.vscode
+node_modules
