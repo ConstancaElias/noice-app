@@ -58,6 +58,11 @@ router.get('/notToForget', function(Req, res, next) {
 })
 
 
+router.get('/studySchedule', function(req, res, next) {
+    res.render('index', { view: "study" })
+})
+
+
 router.get('/tasksDone', function(req, res, next) {
   let token = req.cookies.token
   axios.get(apiServer + '/tasks/done?token=' + token)
