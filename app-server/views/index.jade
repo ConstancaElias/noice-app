@@ -97,6 +97,8 @@ block content
               a(class="nav-link" href="/tasksDone") Tasks Done
             li(class="nav-item")
               a(class="nav-link" href="/studyTimer") Time To Study!
+            li(class="nav-item")
+              a(class="nav-link" href="/studySchedule") Study Schedule!
 
 
           ul(class="nav navbar-nav navbar-right")
@@ -245,8 +247,7 @@ block content
 
     if view == "tasksDone"
       div(id="myContainer")
-        div(class="row")
-            
+        div(class="row")           
           div(class="col-sm-3")
             div(class="container my-3 mx-3")
               p
@@ -261,3 +262,949 @@ block content
           #inputArea
           | &#x9;&#x9;
           h1(style="text-align:center; font-size:140px")#time 0:00
+
+    if view == "study"
+      .h1(style='text-align:center') Your Schedule! 
+      #canvas.container.group
+        #primaryContent.group
+          form           
+          .form-group
+            label(for='exampleFormControlInput1') Date
+              input#exampleFormControlInput1.form-control(type='date', placeholder='Write and you can do it!')
+            |   
+          .row
+            .col
+              .form-group
+                label(for='exampleFormControlInput1') Task
+                |     
+                input#exampleFormControlInput1.form-control(type='string', placeholder='Write and you can do it!')
+              |   
+            .col
+              .form-group
+                label(for='exampleFormControlSelect1') Start time
+                |     
+                select#exampleFormControlSelect1.form-control
+                  option 12:00 am
+                  |       
+                  option 00:30 am
+                  |       
+                  option 01:00 am
+                  |       
+                  option 01:30 am
+                  |       
+                  option 02:00 am
+                  |       
+                  option 02:30 am
+                  |       
+                  option 03:00 am
+                  |       
+                  option 03:30 am
+                  |       
+                  option 04:00 am
+                  |       
+                  option 04:30 am
+                  |       
+                  option 05:00 am
+                  |       
+                  option 05:30 am
+                  |       
+                  option 06:00 am
+                  |       
+                  option 06:30 am
+                  |       
+                  option 07:00 am
+                  |       
+                  option 07:30 am
+                  |       
+                  option 08:00 am
+                  |       
+                  option 08:30 am
+                  |       
+                  option 09:00 am
+                  |       
+                  option 09:30 am
+                  |       
+                  option 10:00 am
+                  |       
+                  option 10:30 am
+                  |       
+                  option 11:00 am
+                  |       
+                  option 11:30 am
+                  |       
+                  option 12:00 pm
+                  |       
+                  option 00:00 pm
+                  |       
+                  option 00:30 pm
+                  |       
+                  option 01:00 pm
+                  |       
+                  option 01:30 pm
+                  |       
+                  option 02:00 pm
+                  |       
+                  option 02:30 pm
+                  |       
+                  option 03:00 pm
+                  |       
+                  option 03:30 pm
+                  |       
+                  option 04:00 pm
+                  |       
+                  option 04:30 pm
+                  |       
+                  option 05:00 pm
+                  |       
+                  option 05:30 pm
+                  |       
+                  option 06:00 pm
+                  |       
+                  option 06:30 pm
+                  |       
+                  option 07:00 pm
+                  |       
+                  option 07:30 pm
+                  |       
+                  option 08:00 pm
+                  |       
+                  option 08:30 pm
+                  |       
+                  option 09:00 pm
+                  |       
+                  option 09:30 pm
+                  |       
+                  option 10:00 pm
+                  |       
+                  option 10:30 pm
+                  |       
+                  option 11:00 pm
+                  |       
+                  option 11:30 pm
+              | 
+            .col  
+              .form-group
+                label(for='exampleFormControlSelect1') Finish Time
+                |     
+                select#exampleFormControlSelect1.form-control
+                  option 12:00 am
+                  |       
+                  option 00:30 am
+                  |       
+                  option 01:00 am
+                  |       
+                  option 01:30 am
+                  |       
+                  option 02:00 am
+                  |       
+                  option 02:30 am
+                  |       
+                  option 03:00 am
+                  |       
+                  option 03:30 am
+                  |       
+                  option 04:00 am
+                  |       
+                  option 04:30 am
+                  |       
+                  option 05:00 am
+                  |       
+                  option 05:30 am
+                  |       
+                  option 06:00 am
+                  |       
+                  option 06:30 am
+                  |       
+                  option 07:00 am
+                  |       
+                  option 07:30 am
+                  |       
+                  option 08:00 am
+                  |       
+                  option 08:30 am
+                  |       
+                  option 09:00 am
+                  |       
+                  option 09:30 am
+                  |       
+                  option 10:00 am
+                  |       
+                  option 10:30 am
+                  |       
+                  option 11:00 am
+                  |       
+                  option 11:30 am
+                  |       
+                  option 12:00 pm
+                  |       
+                  option 00:00 pm
+                  |       
+                  option 00:30 pm
+                  |       
+                  option 01:00 pm
+                  |       
+                  option 01:30 pm
+                  |       
+                  option 02:00 pm
+                  |       
+                  option 02:30 pm
+                  |       
+                  option 03:00 pm
+                  |       
+                  option 03:30 pm
+                  |       
+                  option 04:00 pm
+                  |       
+                  option 04:30 pm
+                  |       
+                  option 05:00 pm
+                  |       
+                  option 05:30 pm
+                  |       
+                  option 06:00 pm
+                  |       
+                  option 06:30 pm
+                  |       
+                  option 07:00 pm
+                  |       
+                  option 07:30 pm
+                  |       
+                  option 08:00 pm
+                  |       
+                  option 08:30 pm
+                  |       
+                  option 09:00 pm
+                  |       
+                  option 09:30 pm
+                  |       
+                  option 10:00 pm
+                  |       
+                  option 10:30 pm
+                  |       
+                  option 11:00 pm
+                  |       
+                  option 11:30 pm
+              |     
+            .col
+                label(for='inlineRadio1') Done ?
+                |     
+                .form-check.form-check-inline
+                    input#inlineRadio1.form-check-input(type='radio')
+                    |   
+                    label.form-check-label(for='inlineRadio1') Yes
+                  .form-check.form-check-inline
+                    input#inlineRadio2.form-check-input(type='radio')
+                    |   
+                    label.form-check-label(for='inlineRadio2') No
+          .row
+              .col
+                .form-group
+                  label(for='exampleFormControlInput1') Task
+                  |     
+                  input#exampleFormControlInput1.form-control(type='string', placeholder='Write and you can do it!')
+                |   
+              .col
+                .form-group
+                  label(for='exampleFormControlSelect1') Start time
+                  |     
+                  select#exampleFormControlSelect1.form-control
+                    option 12:00 am
+                    |       
+                    option 00:30 am
+                    |       
+                    option 01:00 am
+                    |       
+                    option 01:30 am
+                    |       
+                    option 02:00 am
+                    |       
+                    option 02:30 am
+                    |       
+                    option 03:00 am
+                    |       
+                    option 03:30 am
+                    |       
+                    option 04:00 am
+                    |       
+                    option 04:30 am
+                    |       
+                    option 05:00 am
+                    |       
+                    option 05:30 am
+                    |       
+                    option 06:00 am
+                    |       
+                    option 06:30 am
+                    |       
+                    option 07:00 am
+                    |       
+                    option 07:30 am
+                    |       
+                    option 08:00 am
+                    |       
+                    option 08:30 am
+                    |       
+                    option 09:00 am
+                    |       
+                    option 09:30 am
+                    |       
+                    option 10:00 am
+                    |       
+                    option 10:30 am
+                    |       
+                    option 11:00 am
+                    |       
+                    option 11:30 am
+                    |       
+                    option 12:00 pm
+                    |       
+                    option 00:00 pm
+                    |       
+                    option 00:30 pm
+                    |       
+                    option 01:00 pm
+                    |       
+                    option 01:30 pm
+                    |       
+                    option 02:00 pm
+                    |       
+                    option 02:30 pm
+                    |       
+                    option 03:00 pm
+                    |       
+                    option 03:30 pm
+                    |       
+                    option 04:00 pm
+                    |       
+                    option 04:30 pm
+                    |       
+                    option 05:00 pm
+                    |       
+                    option 05:30 pm
+                    |       
+                    option 06:00 pm
+                    |       
+                    option 06:30 pm
+                    |       
+                    option 07:00 pm
+                    |       
+                    option 07:30 pm
+                    |       
+                    option 08:00 pm
+                    |       
+                    option 08:30 pm
+                    |       
+                    option 09:00 pm
+                    |       
+                    option 09:30 pm
+                    |       
+                    option 10:00 pm
+                    |       
+                    option 10:30 pm
+                    |       
+                    option 11:00 pm
+                    |       
+                    option 11:30 pm
+                | 
+              .col  
+                .form-group
+                  label(for='exampleFormControlSelect1') Finish Time
+                  |     
+                  select#exampleFormControlSelect1.form-control
+                    option 12:00 am
+                    |       
+                    option 00:30 am
+                    |       
+                    option 01:00 am
+                    |       
+                    option 01:30 am
+                    |       
+                    option 02:00 am
+                    |       
+                    option 02:30 am
+                    |       
+                    option 03:00 am
+                    |       
+                    option 03:30 am
+                    |       
+                    option 04:00 am
+                    |       
+                    option 04:30 am
+                    |       
+                    option 05:00 am
+                    |       
+                    option 05:30 am
+                    |       
+                    option 06:00 am
+                    |       
+                    option 06:30 am
+                    |       
+                    option 07:00 am
+                    |       
+                    option 07:30 am
+                    |       
+                    option 08:00 am
+                    |       
+                    option 08:30 am
+                    |       
+                    option 09:00 am
+                    |       
+                    option 09:30 am
+                    |       
+                    option 10:00 am
+                    |       
+                    option 10:30 am
+                    |       
+                    option 11:00 am
+                    |       
+                    option 11:30 am
+                    |       
+                    option 12:00 pm
+                    |       
+                    option 00:00 pm
+                    |       
+                    option 00:30 pm
+                    |       
+                    option 01:00 pm
+                    |       
+                    option 01:30 pm
+                    |       
+                    option 02:00 pm
+                    |       
+                    option 02:30 pm
+                    |       
+                    option 03:00 pm
+                    |       
+                    option 03:30 pm
+                    |       
+                    option 04:00 pm
+                    |       
+                    option 04:30 pm
+                    |       
+                    option 05:00 pm
+                    |       
+                    option 05:30 pm
+                    |       
+                    option 06:00 pm
+                    |       
+                    option 06:30 pm
+                    |       
+                    option 07:00 pm
+                    |       
+                    option 07:30 pm
+                    |       
+                    option 08:00 pm
+                    |       
+                    option 08:30 pm
+                    |       
+                    option 09:00 pm
+                    |       
+                    option 09:30 pm
+                    |       
+                    option 10:00 pm
+                    |       
+                    option 10:30 pm
+                    |       
+                    option 11:00 pm
+                    |       
+                    option 11:30 pm
+                |     
+              .col
+                  label(for='inlineRadio1') Done ?
+                  |     
+                  .form-check.form-check-inline
+                      input#inlineRadio1.form-check-input(type='radio')
+                      |   
+                      label.form-check-label(for='inlineRadio1') Yes
+                    .form-check.form-check-inline
+                      input#inlineRadio2.form-check-input(type='radio')
+                      |   
+                      label.form-check-label(for='inlineRadio2') No
+            .row
+              .col
+                .form-group
+                  label(for='exampleFormControlInput1') Task
+                  |     
+                  input#exampleFormControlInput1.form-control(type='string', placeholder='Write and you can do it!')
+                |   
+              .col
+                .form-group
+                  label(for='exampleFormControlSelect1') Start time
+                  |     
+                  select#exampleFormControlSelect1.form-control
+                    option 12:00 am
+                    |       
+                    option 00:30 am
+                    |       
+                    option 01:00 am
+                    |       
+                    option 01:30 am
+                    |       
+                    option 02:00 am
+                    |       
+                    option 02:30 am
+                    |       
+                    option 03:00 am
+                    |       
+                    option 03:30 am
+                    |       
+                    option 04:00 am
+                    |       
+                    option 04:30 am
+                    |       
+                    option 05:00 am
+                    |       
+                    option 05:30 am
+                    |       
+                    option 06:00 am
+                    |       
+                    option 06:30 am
+                    |       
+                    option 07:00 am
+                    |       
+                    option 07:30 am
+                    |       
+                    option 08:00 am
+                    |       
+                    option 08:30 am
+                    |       
+                    option 09:00 am
+                    |       
+                    option 09:30 am
+                    |       
+                    option 10:00 am
+                    |       
+                    option 10:30 am
+                    |       
+                    option 11:00 am
+                    |       
+                    option 11:30 am
+                    |       
+                    option 12:00 pm
+                    |       
+                    option 00:00 pm
+                    |       
+                    option 00:30 pm
+                    |       
+                    option 01:00 pm
+                    |       
+                    option 01:30 pm
+                    |       
+                    option 02:00 pm
+                    |       
+                    option 02:30 pm
+                    |       
+                    option 03:00 pm
+                    |       
+                    option 03:30 pm
+                    |       
+                    option 04:00 pm
+                    |       
+                    option 04:30 pm
+                    |       
+                    option 05:00 pm
+                    |       
+                    option 05:30 pm
+                    |       
+                    option 06:00 pm
+                    |       
+                    option 06:30 pm
+                    |       
+                    option 07:00 pm
+                    |       
+                    option 07:30 pm
+                    |       
+                    option 08:00 pm
+                    |       
+                    option 08:30 pm
+                    |       
+                    option 09:00 pm
+                    |       
+                    option 09:30 pm
+                    |       
+                    option 10:00 pm
+                    |       
+                    option 10:30 pm
+                    |       
+                    option 11:00 pm
+                    |       
+                    option 11:30 pm
+                | 
+              .col  
+                .form-group
+                  label(for='exampleFormControlSelect1') Finish Time
+                  |     
+                  select#exampleFormControlSelect1.form-control
+                    option 12:00 am
+                    |       
+                    option 00:30 am
+                    |       
+                    option 01:00 am
+                    |       
+                    option 01:30 am
+                    |       
+                    option 02:00 am
+                    |       
+                    option 02:30 am
+                    |       
+                    option 03:00 am
+                    |       
+                    option 03:30 am
+                    |       
+                    option 04:00 am
+                    |       
+                    option 04:30 am
+                    |       
+                    option 05:00 am
+                    |       
+                    option 05:30 am
+                    |       
+                    option 06:00 am
+                    |       
+                    option 06:30 am
+                    |       
+                    option 07:00 am
+                    |       
+                    option 07:30 am
+                    |       
+                    option 08:00 am
+                    |       
+                    option 08:30 am
+                    |       
+                    option 09:00 am
+                    |       
+                    option 09:30 am
+                    |       
+                    option 10:00 am
+                    |       
+                    option 10:30 am
+                    |       
+                    option 11:00 am
+                    |       
+                    option 11:30 am
+                    |       
+                    option 12:00 pm
+                    |       
+                    option 00:00 pm
+                    |       
+                    option 00:30 pm
+                    |       
+                    option 01:00 pm
+                    |       
+                    option 01:30 pm
+                    |       
+                    option 02:00 pm
+                    |       
+                    option 02:30 pm
+                    |       
+                    option 03:00 pm
+                    |       
+                    option 03:30 pm
+                    |       
+                    option 04:00 pm
+                    |       
+                    option 04:30 pm
+                    |       
+                    option 05:00 pm
+                    |       
+                    option 05:30 pm
+                    |       
+                    option 06:00 pm
+                    |       
+                    option 06:30 pm
+                    |       
+                    option 07:00 pm
+                    |       
+                    option 07:30 pm
+                    |       
+                    option 08:00 pm
+                    |       
+                    option 08:30 pm
+                    |       
+                    option 09:00 pm
+                    |       
+                    option 09:30 pm
+                    |       
+                    option 10:00 pm
+                    |       
+                    option 10:30 pm
+                    |       
+                    option 11:00 pm
+                    |       
+                    option 11:30 pm
+                |     
+              .col
+                  label(for='inlineRadio1') Done ?
+                  |     
+                  .form-check.form-check-inline
+                      input#inlineRadio1.form-check-input(type='radio')
+                      |   
+                      label.form-check-label(for='inlineRadio1') Yes
+                    .form-check.form-check-inline
+                      input#inlineRadio2.form-check-input(type='radio')
+                      |   
+                      label.form-check-label(for='inlineRadio2') No
+            .row
+              .col
+                .form-group
+                  label(for='exampleFormControlInput1') Task
+                  |     
+                  input#exampleFormControlInput1.form-control(type='string', placeholder='Write and you can do it!')
+                |   
+              .col
+                .form-group
+                  label(for='exampleFormControlSelect1') Start time
+                  |     
+                  select#exampleFormControlSelect1.form-control
+                    option 12:00 am
+                    |       
+                    option 00:30 am
+                    |       
+                    option 01:00 am
+                    |       
+                    option 01:30 am
+                    |       
+                    option 02:00 am
+                    |       
+                    option 02:30 am
+                    |       
+                    option 03:00 am
+                    |       
+                    option 03:30 am
+                    |       
+                    option 04:00 am
+                    |       
+                    option 04:30 am
+                    |       
+                    option 05:00 am
+                    |       
+                    option 05:30 am
+                    |       
+                    option 06:00 am
+                    |       
+                    option 06:30 am
+                    |       
+                    option 07:00 am
+                    |       
+                    option 07:30 am
+                    |       
+                    option 08:00 am
+                    |       
+                    option 08:30 am
+                    |       
+                    option 09:00 am
+                    |       
+                    option 09:30 am
+                    |       
+                    option 10:00 am
+                    |       
+                    option 10:30 am
+                    |       
+                    option 11:00 am
+                    |       
+                    option 11:30 am
+                    |       
+                    option 12:00 pm
+                    |       
+                    option 00:00 pm
+                    |       
+                    option 00:30 pm
+                    |       
+                    option 01:00 pm
+                    |       
+                    option 01:30 pm
+                    |       
+                    option 02:00 pm
+                    |       
+                    option 02:30 pm
+                    |       
+                    option 03:00 pm
+                    |       
+                    option 03:30 pm
+                    |       
+                    option 04:00 pm
+                    |       
+                    option 04:30 pm
+                    |       
+                    option 05:00 pm
+                    |       
+                    option 05:30 pm
+                    |       
+                    option 06:00 pm
+                    |       
+                    option 06:30 pm
+                    |       
+                    option 07:00 pm
+                    |       
+                    option 07:30 pm
+                    |       
+                    option 08:00 pm
+                    |       
+                    option 08:30 pm
+                    |       
+                    option 09:00 pm
+                    |       
+                    option 09:30 pm
+                    |       
+                    option 10:00 pm
+                    |       
+                    option 10:30 pm
+                    |       
+                    option 11:00 pm
+                    |       
+                    option 11:30 pm
+                | 
+              .col  
+                .form-group
+                  label(for='exampleFormControlSelect1') Finish Time
+                  |     
+                  select#exampleFormControlSelect1.form-control
+                    option 12:00 am
+                    |       
+                    option 00:30 am
+                    |       
+                    option 01:00 am
+                    |       
+                    option 01:30 am
+                    |       
+                    option 02:00 am
+                    |       
+                    option 02:30 am
+                    |       
+                    option 03:00 am
+                    |       
+                    option 03:30 am
+                    |       
+                    option 04:00 am
+                    |       
+                    option 04:30 am
+                    |       
+                    option 05:00 am
+                    |       
+                    option 05:30 am
+                    |       
+                    option 06:00 am
+                    |       
+                    option 06:30 am
+                    |       
+                    option 07:00 am
+                    |       
+                    option 07:30 am
+                    |       
+                    option 08:00 am
+                    |       
+                    option 08:30 am
+                    |       
+                    option 09:00 am
+                    |       
+                    option 09:30 am
+                    |       
+                    option 10:00 am
+                    |       
+                    option 10:30 am
+                    |       
+                    option 11:00 am
+                    |       
+                    option 11:30 am
+                    |       
+                    option 12:00 pm
+                    |       
+                    option 00:00 pm
+                    |       
+                    option 00:30 pm
+                    |       
+                    option 01:00 pm
+                    |       
+                    option 01:30 pm
+                    |       
+                    option 02:00 pm
+                    |       
+                    option 02:30 pm
+                    |       
+                    option 03:00 pm
+                    |       
+                    option 03:30 pm
+                    |       
+                    option 04:00 pm
+                    |       
+                    option 04:30 pm
+                    |       
+                    option 05:00 pm
+                    |       
+                    option 05:30 pm
+                    |       
+                    option 06:00 pm
+                    |       
+                    option 06:30 pm
+                    |       
+                    option 07:00 pm
+                    |       
+                    option 07:30 pm
+                    |       
+                    option 08:00 pm
+                    |       
+                    option 08:30 pm
+                    |       
+                    option 09:00 pm
+                    |       
+                    option 09:30 pm
+                    |       
+                    option 10:00 pm
+                    |       
+                    option 10:30 pm
+                    |       
+                    option 11:00 pm
+                    |       
+                    option 11:30 pm
+                |     
+              .col
+                  label(for='inlineRadio1') Done ?
+                  |     
+                  .form-check.form-check-inline
+                      input#inlineRadio1.form-check-input(type='radio')
+                      |   
+                      label.form-check-label(for='inlineRadio1') Yes
+                    .form-check.form-check-inline
+                      input#inlineRadio2.form-check-input(type='radio')
+                      |   
+                      label.form-check-label(for='inlineRadio2') No
+
+          .form-group
+            label(for='exampleFormControlSelect1') Break Times Check List
+            |     
+            select#exampleFormControlSelect1.form-control
+              option 1
+              |       
+              option 2
+              |       
+              option 3
+              |       
+              option 4
+              |       
+              option 5   
+          .form-group
+            label(for='exampleFormControlSelect2') Evaluate your study (1 - bad and 5 - excellent)
+            |     
+            select#exampleFormControlSelect1.form-control
+              option 1
+              |       
+              option 2
+              |       
+              option 3
+              |       
+              option 4
+              |       
+              option 5
+          |   
+          .form-group
+            label(for='exampleFormControlTextarea1') Notes
+            |     
+            textarea#exampleFormControlTextarea1.form-control(rows='3')
+          .form-group
+            label(for='exampleFormControlTextarea2') Reward
+            |     
+            textarea#exampleFormControlTextarea2.form-control(rows='3')
+        button.btn.btn-primary(type='submit') Submit
+
+
+      
