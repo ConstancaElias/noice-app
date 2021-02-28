@@ -95,6 +95,9 @@ block content
               a(class="nav-link" href="/notToForget") Do Not Forget
             li(class="nav-item")
               a(class="nav-link" href="/tasksDone") Tasks Done
+            li(class="nav-item")
+              a(class="nav-link" href="/studyTimer") Time To Study!
+
 
           ul(class="nav navbar-nav navbar-right")
             li(class="nav-item")
@@ -126,19 +129,19 @@ block content
           
 
     if view == "initial"
-       .h1(style='text-align:center') Mood Tracker
-        .row
-           .container.containerMood
-              i#emoji.large.material-icons
-                | sentiment_satisfied
-              | 
-              input#slider(type='range', min='0', max='4', value='2')
+      .h1(style='text-align:center') Mood Tracker
+      .row
+        .container.containerMood
+          i#emoji.large.material-icons
+            | sentiment_satisfied
+          | 
+          input#slider(type='range', min='0', max='4', value='2')
             
-          script. 
-            var slider=document.getElementById("slider")
-            var emoji=document.getElementById("emoji")
-            var emoticons=["mood_bad","sentiment_very_dissatisfied","sentiment_satisfied", "sentiment_satisfied_alt","sentiment_very_satisfied"]
-            slider.oninput=function(){emoji.innerHTML=emoticons[slider.value];}
+        script. 
+          var slider=document.getElementById("slider")
+          var emoji=document.getElementById("emoji")
+          var emoticons=["mood_bad","sentiment_very_dissatisfied","sentiment_satisfied", "sentiment_satisfied_alt","sentiment_very_satisfied"]
+          slider.oninput=function(){emoji.innerHTML=emoticons[slider.value];}
       div(id="myContainer")
         .row
           .col          
@@ -238,39 +241,23 @@ block content
                                 span
                                   a(href="/tasks/delete/#{task._id}")    
                                     i(class="fas fa-trash")
-
-
-
-      
-              //- div(id="containerLeft" class="container mt-4 mx-2")
-                each g in goals
-                  div(class="card rounded p-3 m-2")
-                    div(class="row px-3")
-                      div(class="col")
-                        span 
-                          p(class="card-text m-0") #{g.motivational}                 
-                    div(class="row px-3")
-                      div(class="col")
-                        span
-                          strong=g.mood            
-                div(class="column")
-
-                  div(class="container my-3")
-                    p
-                      b Noice Tasks To-do
-                  div(id="containerFeed" class="container mt-2")
-                    each task in tasks
-                      p #{task.title}
-                      p #{task.description}
-                      
-  if view == "notToForget"
      
 
-  if view == "tasksDone"
-    div(id="myContainer")
-       div(class="row")
-          
-        div(class="col-sm-3")
-          div(class="container my-3 mx-3")
-            p
-              b Tasks Done
+    if view == "tasksDone"
+      div(id="myContainer")
+        div(class="row")
+            
+          div(class="col-sm-3")
+            div(class="container my-3 mx-3")
+              p
+                b Tasks Done
+
+    if view == "timer"
+      .h1(style='text-align:center') Study Time! 
+      #canvas.container.group
+        #primaryContent.group
+          p(style="text-align:center") How many minutes shall you study?
+          | &#x9;    
+          #inputArea
+          | &#x9;&#x9;
+          h1(style="text-align:center; font-size:140px")#time 0:00
