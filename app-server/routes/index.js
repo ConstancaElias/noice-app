@@ -143,4 +143,18 @@ router.get('/profile', function(req, res, next) {
 })
 
 
+router.post('/mood/new', function(req, res) {
+
+  let token = req.cookies.token
+
+  console.log(req.body.mood)
+
+  axios.post(apiServer + '/mood/new?token=' + token, {"mood": req.body.mood})
+        .then(data => {
+          res.redirect('/myHomePage')
+        })
+        .catch(e => console.log("[index] /myHomePage : error getting tasks -- " + e))
+})
+
+
 module.exports = router;
