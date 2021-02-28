@@ -36,7 +36,6 @@ db.once('open', function() {
 
 var tasksRouter = require('./routes/tasks')
 var goalsRouter = require('./routes/goals')
-var moodRouter = require('./routes/mood')
 
 const e = require('express');
 
@@ -89,10 +88,8 @@ app.use(function(req, res, next) {
   //401 - unauthorized
 })
 
-
 app.use('/goals', goalsRouter)
 app.use('/tasks', tasksRouter)
-app.use('/mood', moodRouter)
 
 
 // catch 404 and forward to error handler

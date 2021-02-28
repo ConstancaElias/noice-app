@@ -24,3 +24,7 @@ module.exports.insert = (newTask)=> {
     var t = new Tasks(newTask)
     return t.save();
 }
+
+module.exports.update = task => {
+    return Tasks.updateOne({_id: task.id },{$set: {title: task.title, description: task.description, dueDate: task.dueDate}});
+};
