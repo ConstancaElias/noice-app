@@ -175,61 +175,7 @@ block content
                             span(aria-hidden="true") &times;
                   
                         div(class="modal-body")
-                          form(method='POST' action = `/edit/file/` + resource.id +'?_method=PUT&name=' + resource.name)
-
-                div(class="form-label-group")
-                  input(type="text" id="inputTitle" name="title" class="form-control" value = resource.title required)
-                  label(for="inputTitle") Title
-
-                div(class="form-label-group")
-                  input(type="text" id="inputSubtitle" name="subtitle" class="form-control" value = resource.subtitle required)
-                  label(for="inputSubtitle") Subtitle
-
-                div(class="form-label-group")
-                  input(type="text" id="inputSubject" name="subject" class="form-control" value = resource.subject required)
-                  label(for="inputSubject") Subject
-
-                div(class="form-label-group")
-                  input(type="text" id="inputAuthor" name="authors" class="form-control" value = resource.authors required)
-                  label(for="inputAuthor") Authors
-              
-                div(class="form-label-group")
-                  input(type="text" id="inputDescription" name="description" class="form-control" value = resource.description required)
-                  label(for="inputDescription") Description
-
-                div(class="form-label-group")
-                  input(type="text" id="inputHashtags" name="hashtags" class="form-control" value = resource.hashtags required)
-                  label(for="inputHashtags") Hashtags
-            
-                div(class="col")  
-                  p 
-                    strong Resource Type:
-                  div
-                    for t in resourcesType
-                      if t == resource.type
-                        div(class="form-check mb-3")
-                          input(type="radio" class="form-check-input" id="customCheck#{t}" name="type" value= t checked)
-                          label(class="form-check-label" for="customCheck#{t}")= t
-                      else
-                        div(class="form-check mb-3")
-                          input(type="radio" class="form-check-input" id="customCheck#{t}" name="type" value= t)
-                          label(class="form-check-label" for="customCheck#{t}")= t
-
-                  p
-                    strong Visibility:
-                  div
-                    for v in visibilityTypes
-                      if v == resource.visibility
-                        div(class="form-check mb-3")
-                          input(type="radio" class="form-check-input" id="customCheckPublic" name="visibility" value=v checked)
-                          label(class="form-check-label" for="customCheckPublic")= v
-
-                      else
-                        div(class="form-check mb-3")
-                          input(type="radio" class="form-check-input" id="customCheckPrivate" name="visibility" value=v)
-                          label(class="form-check-label" for="customCheckPrivate")= v
-                  
-                  input(class="btn btn-lg btn-primary" type='submit' value='Submit')
+                          
                             
                         div(class="modal-footer") 
                       
