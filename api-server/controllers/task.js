@@ -9,7 +9,7 @@ module.exports.list = () => {
 
 // return list of tasks done
 module.exports.listDone = () => {
-    return Tasks.find({done: "true"})
+    return Tasks.find({done: "True"})
         .sort()
         .exec()
 }
@@ -27,4 +27,8 @@ module.exports.insert = (newTask)=> {
 
 module.exports.update = task => {
     return Tasks.updateOne({_id: task.id },{$set: {title: task.title, description: task.description, dueDate: task.dueDate}});
+};
+
+module.exports.updateDone = id => {
+    return Tasks.updateOne({_id: id },{$set: {done: "True"}});
 };
