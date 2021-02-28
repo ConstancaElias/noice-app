@@ -16,7 +16,7 @@ module.exports.insert = (newGoal)=> {
 
 // apaga um recurso dado o seu ID
 module.exports.delete = id => {
-    return Goal.deleteOne({ id: id });
+    return Goal.deleteOne({_id: id });
 };
 
 

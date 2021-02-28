@@ -18,3 +18,9 @@ module.exports.listDone = () => {
 module.exports.delete = (id) => {
     return Tasks.deleteOne({id: id})
 }
+
+//insert new goal
+module.exports.insert = (newTask)=> {
+    var t = new Tasks(newTask)
+    return t.save();
+}
