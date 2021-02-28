@@ -29,6 +29,16 @@ router.get('/done', (req, res) => {
  
  })
 
+router.put('/edit/done/:id', (req, res) => {
+
+    Tasks.updateDone(req.params.id)
+    .then(data => res.status(201).json(data))
+    .catch(e => {
+        console.log("[edit] couldn't update the resource")
+        res.status(500).jsonp({err: e})
+    })
+})
+
 router.put('/edit/:id', (req, res) => {
     let newTask = {
         id: req.params.id,
@@ -44,6 +54,8 @@ router.put('/edit/:id', (req, res) => {
         res.status(500).jsonp({err: e})
     })
 })
+
+
 
 router.delete('/:id', (req, res) => {
 

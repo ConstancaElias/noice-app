@@ -62,6 +62,9 @@ router.get('/studySchedule', function(req, res, next) {
     res.render('index', { view: "study" })
 })
 
+router.get('/studyTimer', function(req, res, next) {
+  res.render('index', { view: "timer" })
+})
 
 router.get('/tasksDone', function(req, res, next) {
   let token = req.cookies.token
@@ -106,6 +109,14 @@ router.post('/edit/goal/:id', (req, res) => {
 
 router.post('/edit/task/:id', (req, res) => {
   axios.put(apiServer + '/tasks/edit/' + req.params.id + '?token=' + req.cookies.token , {"title": req.body.title, "description": req.body.description, "dueDate": req.body.dueDate})
+      .then(data => 
+        res.redirect('/myHomePage')
+      )
+      .catch(e => console.log("erro ao realizar update do recurso " + e))
+})
+
+router.get('/tasks/edit/:id', (req, res) => {
+  axios.put(apiServer + '/tasks/edit/done/' + req.params.id + '?token=' + req.cookies.token , {"done": "True"})
       .then(data => 
         res.redirect('/myHomePage')
       )
