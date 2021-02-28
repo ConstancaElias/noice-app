@@ -41,6 +41,33 @@ router.delete('/:id', (req, res) => {
 })
 
 router.post('/new', (req, res) => {
+    var newTask = {
+        title: req.body.title,
+        description: req.body.description,
+        dueDate: req.body.dueDate   
+    }   
+
+    Tasks.insert(newTask)
+    .then(data => {
+        console.log(data)
+        res.status(201).json(data)
+    })
+    .catch(e => res.status(500).jsonp({err: e}))
+
+})
+
+router.delete('/:id', (req, res) => {
+
+    Tasks.delete(req.params.id)
+    .then(data => {
+        console.log(data)
+        res.status(201).json(data)
+    })
+    .catch(e => res.status(500).jsonp({err: e}))
+
+})
+
+router.post('/new', (req, res) => {
 
     Tasks.delete(req.params.id)
     .then(data => {

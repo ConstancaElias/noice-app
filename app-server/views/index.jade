@@ -157,16 +157,29 @@ block content
                 .card-body
                   .h3(class="card-title") Task
                   .mb-3
-                    label.form-label(for='taskcontrol') Title
-                    |   
-                    input#taskcontrol.form-control(type='text', placeholder='Enter Title')
-                    .mb-3
-                    label.form-label(for='descriptioncontrol') Example description
-                    |   
-                    textarea#descriptioncontrol.form-control(rows='3')
-                  button.btn.btn-primary.btn-lg(type='button') Save!
+                    form(action="/tasks" method="POST")
+                      label.form-label(for='taskcontrol') Title
+                      |   
+                      input#taskcontrol.form-control(type='text' name="title" placeholder='Enter Title')
+                      .mb-3
+                      label.form-label(for='descriptioncontrol') Example description
+                      |   
+                      textarea#descriptioncontrol.form-control(name="description" rows='3')
+                      div(class="form-label-group")
+                        input(type="date" id="inputDate" name="dueDate" class="form-control" placeholder="Due Date" required)
+                        label(for="inputDate") Due Date
+                      input.form-control(type='submit' value="Add")
 
-        
+                    div
+                      ul
+                        each task in tasks
+                          li 
+                            p #{task.title}
+                            p #{task.description}
+                            a(href="/tasks/delete/#{task._id}")    
+                              i(class="fas fa-trash")
+
+      
               //- div(id="containerLeft" class="container mt-4 mx-2")
                 each g in goals
                   div(class="card rounded p-3 m-2")

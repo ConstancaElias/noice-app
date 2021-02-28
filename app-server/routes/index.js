@@ -58,8 +58,9 @@ router.get('/notToForget', function(Req, res, next) {
 })
 
 
-router.get('/tasks/done', function(Req, res, next) {
-  axios.get(apiServer + '/tasksDone?token=' + token)
+router.get('/tasksDone', function(req, res, next) {
+  let token = req.cookies.token
+  axios.get(apiServer + '/tasks/done?token=' + token)
         .then(data => {
           let tasks = data.data
           res.render('index', {view: "tasksDone", tasks: tasks})
@@ -78,26 +79,37 @@ router.post('/goals', function(req, res) {
         .catch(e => console.log("[index] /myHomePage : error getting tasks -- " + e))
 })
 
-router.get('/goals/delete/:id', function(req, res) {
+router.post('/tasks', function(req, res) {
 
   let token = req.cookies.token
 
-  axios.delete(apiServer + '/goals/' + req.params.id + '?token=' + token, {"title": req.body.goal})
+  axios.post(apiServer + '/tasks/new?token=' + token, {"title": req.body.title, "description": req.body.description, "dueDate": req.body.dueDate})
         .then(data => {
           res.redirect('/myHomePage')
         })
         .catch(e => console.log("[index] /myHomePage : error getting tasks -- " + e))
 })
 
-router.post('/tasks', function(req, res) {
+router.get('/goals/delete/:id', function(req, res) {
 
   let token = req.cookies.token
 
-  axios.post(apiServer + '/tasks/new?token=' + token)
+  axios.delete(apiServer + '/goals/' + req.params.id + '?token=' + token)
         .then(data => {
           res.redirect('/myHomePage')
         })
         .catch(e => console.log("[index] /myHomePage : error getting tasks -- " + e))
+})
+
+router.get('/tasks/delete/:id', function(req, res) {
+
+  let token = req.cookies.token
+
+  axios.delete(apiServer + '/tasks/' + req.params.id + '?token=' + token)
+        .then(data => {
+          res.redirect('/myHomePage')
+        })
+        .catch(e => console.log("[index] /tasks/delete : error deleting tasks -- " + e))
 })
 
 router.get('/logout', function(Req, res, next) {
