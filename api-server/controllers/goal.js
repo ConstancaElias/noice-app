@@ -19,4 +19,6 @@ module.exports.delete = id => {
     return Goal.deleteOne({_id: id });
 };
 
-
+module.exports.update = goal => {
+    return Goal.updateOne({_id: goal._id },{$set: {title: goal.title}});
+};

@@ -20,7 +20,6 @@ router.get('/', (req, res) => {
 
 router.post('/new', (req, res) => {
     var newGoal = {
-        id: 12,
         title: req.body.title,
         done: "false"   
     }   
@@ -33,6 +32,21 @@ router.post('/new', (req, res) => {
     .catch(e => res.status(500).jsonp({err: e}))
 
 })
+
+router.put('/edit/:id', (req, res) => {
+    let newGoal = {
+        _id: req.params.id,
+        title: req.body.title
+    }
+
+    Goals.update(newGoal)
+    .then(data => res.status(201).json(data))
+    .catch(e => {
+        console.log("[edit] couldn't update the resource")
+        res.status(500).jsonp({err: e})
+    })
+})
+
 
 router.delete('/:id', (req, res) => {
 
