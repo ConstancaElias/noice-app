@@ -617,6 +617,7 @@ input[type="range"]::-webkit-slider-thumb {
     font-family: 'Material Icons';
     font-weight: bold;
     font-style: normal;
+    font-size: 100px !important;
     display: inline-block;
     line-height: 1;
     text-transform: none;
