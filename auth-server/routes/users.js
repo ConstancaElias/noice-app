@@ -1,17 +1,15 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 var jwt = require('jsonwebtoken')
 var fs = require('fs')
-const path = require("path");
+const path = require("path")
 
 
-var proxy = require('express-http-proxy');
+var proxy = require('express-http-proxy')
 
-const User = require('../controllers/user');
-const { use } = require('../../api-server/routes');
- 
+const User = require('../controllers/user')
 
-const privateRsaKey = fs.readFileSync(path.resolve(__dirname, '../private_key.pem'), 'utf8');
+const privateRsaKey = fs.readFileSync(path.resolve(__dirname, '../private_key.pem'), 'utf8')
 
 
 /*

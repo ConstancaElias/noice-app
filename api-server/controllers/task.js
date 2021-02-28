@@ -16,7 +16,7 @@ module.exports.listDone = () => {
 
 //delete a task
 module.exports.delete = (id) => {
-    return Tasks.deleteOne({id: id})
+    return Tasks.deleteOne({_id: id})
 }
 
 //insert new goal

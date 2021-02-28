@@ -92,9 +92,9 @@ block content
             li(class="nav-item")
               a(class="nav-link" href="/myHomePage") Home
             li(class="nav-item")
-              a(class="nav-link" href="/notToForget") NotToForget
+              a(class="nav-link" href="/notToForget") Do Not Forget
             li(class="nav-item")
-              a(class="nav-link" href="/tasksDone") TasksDone
+              a(class="nav-link" href="/tasksDone") Tasks Done
 
           ul(class="nav navbar-nav navbar-right")
             li(class="nav-item")
@@ -145,47 +145,155 @@ block content
             .card-deck
               .card
                 .card-body
-                  .h3(class="card-title") Daily Goals
-                  div(class="container p-2")
-                      form(method="POST" action="/goals")
-                        input.form-control(type='text', placeholder='Your Goals', name='goal')
-                        input.form-control(type='submit', placeholder='Your Goals' value="Add")
+                  .h3(class="card-title") Daily Habits
+                  a(class="nav-link" href="#goalModal" id="navbarDropdown" role="button" data-toggle="modal" aria-haspopup="true" aria-expanded="false")
+                    button(class="nav-link btn btn-light" style="margin: 10px")
+                      i(class="fas fa-plus" style="color: #1ab8ed")
+                      span(style="color: #1ab8ed")  Add Habit
+
+                  div(class="modal fade" id="goalModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                    div(class="modal-dialog modal-dialog-centered" role="document")
+                      div(class="modal-content")
+                        div(class="modal-header")
+                          h4(class="modal-title" id="myModalLabel") Add Habit
+                          button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                            span(aria-hidden="true") &times;
+                  
+                        div(class="modal-body")
+                          form(action="/goals" method="POST")
+                            input.form-control(type='text', placeholder='Your Goals', name='goal')
+                            input.form-control(type='submit', placeholder='Your Goals' value="Add")
+                            
+                        div(class="modal-footer")
+
+                  div(class="modal fade" id="goalEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                    div(class="modal-dialog modal-dialog-centered" role="document")
+                      div(class="modal-content")
+                        div(class="modal-header")
+                          h4(class="modal-title" id="myModalLabel") Add Habit
+                          button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                            span(aria-hidden="true") &times;
+                  
+                        div(class="modal-body")
+                          form(method='POST' action = `/edit/file/` + resource.id +'?_method=PUT&name=' + resource.name)
+
+                div(class="form-label-group")
+                  input(type="text" id="inputTitle" name="title" class="form-control" value = resource.title required)
+                  label(for="inputTitle") Title
+
+                div(class="form-label-group")
+                  input(type="text" id="inputSubtitle" name="subtitle" class="form-control" value = resource.subtitle required)
+                  label(for="inputSubtitle") Subtitle
+
+                div(class="form-label-group")
+                  input(type="text" id="inputSubject" name="subject" class="form-control" value = resource.subject required)
+                  label(for="inputSubject") Subject
+
+                div(class="form-label-group")
+                  input(type="text" id="inputAuthor" name="authors" class="form-control" value = resource.authors required)
+                  label(for="inputAuthor") Authors
+              
+                div(class="form-label-group")
+                  input(type="text" id="inputDescription" name="description" class="form-control" value = resource.description required)
+                  label(for="inputDescription") Description
+
+                div(class="form-label-group")
+                  input(type="text" id="inputHashtags" name="hashtags" class="form-control" value = resource.hashtags required)
+                  label(for="inputHashtags") Hashtags
+            
+                div(class="col")  
+                  p 
+                    strong Resource Type:
+                  div
+                    for t in resourcesType
+                      if t == resource.type
+                        div(class="form-check mb-3")
+                          input(type="radio" class="form-check-input" id="customCheck#{t}" name="type" value= t checked)
+                          label(class="form-check-label" for="customCheck#{t}")= t
+                      else
+                        div(class="form-check mb-3")
+                          input(type="radio" class="form-check-input" id="customCheck#{t}" name="type" value= t)
+                          label(class="form-check-label" for="customCheck#{t}")= t
+
+                  p
+                    strong Visibility:
+                  div
+                    for v in visibilityTypes
+                      if v == resource.visibility
+                        div(class="form-check mb-3")
+                          input(type="radio" class="form-check-input" id="customCheckPublic" name="visibility" value=v checked)
+                          label(class="form-check-label" for="customCheckPublic")= v
+
+                      else
+                        div(class="form-check mb-3")
+                          input(type="radio" class="form-check-input" id="customCheckPrivate" name="visibility" value=v)
+                          label(class="form-check-label" for="customCheckPrivate")= v
+                  
+                  input(class="btn btn-lg btn-primary" type='submit' value='Submit')
+                            
+                        div(class="modal-footer") 
                       
-                      div
-                        ul
-                          each goal in goals
-                            li 
-                              span #{goal.title}
+                  div
+                    ul
+                      each goal in goals
+                        div(class="notifications-item rounded" style="background: #f2fafc")
+                          div(class="text")
+                            h3 #{goal.title}
+                            span
                               a(href="/goals/delete/#{goal._id}")    
                                 i(class="fas fa-trash")
-
+                            span
+                              a(class="nav-link" href="#goalEditModal" id="navbarDropdown" role="button" data-toggle="modal" aria-haspopup="true" aria-expanded="false")
+                                button(class="nav-link btn btn-light" style="margin: 10px")
+                                  i(class="fas fa-trash" style="color: #1ab8ed")
 
 
               .card
                 .card-body
-                  .h3(class="card-title") Task
+                  .h3(class="card-title") Tasks
                   .mb-3
-                    form(action="/tasks" method="POST")
-                      label.form-label(for='taskcontrol') Title
-                      |   
-                      input#taskcontrol.form-control(type='text' name="title" placeholder='Enter Title')
-                      .mb-3
-                      label.form-label(for='descriptioncontrol') Example description
-                      |   
-                      textarea#descriptioncontrol.form-control(name="description" rows='3')
-                      div(class="form-label-group")
-                        input(type="date" id="inputDate" name="dueDate" class="form-control" placeholder="Due Date" required)
-                        label(for="inputDate") Due Date
-                      input.form-control(type='submit' value="Add")
+                    a(class="nav-link" href="#taskModal" id="navbarDropdown" role="button" data-toggle="modal" aria-haspopup="true" aria-expanded="false")
+                      button(class="nav-link btn btn-light" style="margin: 10px")
+                        i(class="fas fa-plus" style="color: #1ab8ed")
+                        span(style="color: #1ab8ed")  Add Task
+
+                    div(class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel")
+                      div(class="modal-dialog modal-dialog-centered" role="document")
+                        div(class="modal-content")
+                          div(class="modal-header")
+                            h4(class="modal-title" id="myModalLabel") Add Task
+                            button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                              span(aria-hidden="true") &times;
+                    
+                          div(class="modal-body")
+                            form(action="/tasks" method="POST")
+                              label.form-label(for='taskcontrol') Title
+                              |   
+                              input#taskcontrol.form-control(type='text' name="title" placeholder='Enter Title')
+                              .mb-3
+                              label.form-label(for='descriptioncontrol') Example description
+                              |   
+                              textarea#descriptioncontrol.form-control(name="description" rows='3')
+                              div(class="form-label-group")
+                                input(type="date" id="inputDate" name="dueDate" class="form-control" placeholder="Due Date" required)
+                                label(for="inputDate") Due Date
+                              input.form-control(type='submit' value="Add")
+                              
+                          div(class="modal-footer") 
 
                     div
                       ul
                         each task in tasks
-                          li 
-                            p #{task.title}
-                            p #{task.description}
-                            a(href="/tasks/delete/#{task._id}")    
-                              i(class="fas fa-trash")
+                          div(class="notifications-item rounded" style="background: #fff5eb")
+                            div(class="text")
+                                h3 #{task.title}
+                                p
+                                  b #{task.description}
+                                span
+                                  a(href="/tasks/delete/#{task._id}")    
+                                    i(class="fas fa-trash")
+
+
 
       
               //- div(id="containerLeft" class="container mt-4 mx-2")
